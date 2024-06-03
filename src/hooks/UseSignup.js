@@ -5,7 +5,7 @@ import { useAuthContext } from "../contex/AuthContext";
 const UseSignup = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser} = useAuthContext()
-
+  const backedurl = "https://real-time-chat-backed.onrender.com"
   const signup = async ({
     fullName,
     username,
@@ -25,7 +25,7 @@ const UseSignup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/singup", {
+      const res = await fetch(`${backedurl}/api/auth/singup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

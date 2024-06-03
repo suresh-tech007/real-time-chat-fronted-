@@ -5,6 +5,7 @@ import { useAuthContext } from "../contex/AuthContext";
 const UseLogin = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuthContext();
+  const backedurl = "https://real-time-chat-backed.onrender.com"
 
   const login = async (username, password) => {
     
@@ -15,7 +16,7 @@ const UseLogin = () => {
     setLoading(true);
     try {
       
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(`${backedurl}/api/auth/login` , {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -26,8 +27,8 @@ const UseLogin = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-      console.log(data);
-      console.log(JSON.stringify(data));
+      // console.log(data);
+      // console.log(JSON.stringify(data));
 
       localStorage.setItem("chat-user", JSON.stringify(data));
       setAuthUser(data)

@@ -5,10 +5,11 @@ import toast from 'react-hot-toast';
 const UseLogout = () => {
     const [loading,setLoading] = useState(false);
     const {setAuthUser} = useAuthContext()
+    const backedurl = "https://real-time-chat-backed.onrender.com"
    const logout = async() =>{
     setLoading(true)
     try {
-        const res = await fetch("api/auth/logout",{
+        const res = await fetch(`${backedurl}/api/auth/logout`,{
             method: "GET",
             headers:{"Contect-Type":"application/json"}
         });
